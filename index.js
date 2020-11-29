@@ -57,7 +57,7 @@ const questions = [
 function writeToFile() {
     inquirer.prompt(questions)
     .then(data => {
-        const readmeTitle = 'NewReadMe.md'; 
+        const readmeTitle = `${data.title}`; 
         fs.writeFile(readmeTitle, generateMarkdown(data), 'UTF8', (err => {
             if (err) throw err;
             console.log('ReadMe file generated.');
@@ -68,10 +68,4 @@ function writeToFile() {
     );
 };
 
-// function to initialize program
-function init() {
-    writeToFile();
-}
-
-// function call to initialize program
-init();
+writeToFile();
